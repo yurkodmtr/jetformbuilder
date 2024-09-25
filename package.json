@@ -43,7 +43,7 @@
 		"css-loader": "^6.10.0",
 		"husky": "^8.0.3",
 		"mini-css-extract-plugin": "^2.8.0",
-		"nx": "18.0.4",
+		"nx": "^18.0.4",
 		"postcss-import": "^16.1.0",
 		"postcss-loader": "^8.1.0",
 		"postcss-minify": "^1.1.0",

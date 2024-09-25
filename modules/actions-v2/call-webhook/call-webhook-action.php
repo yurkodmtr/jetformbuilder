@@ -35,6 +35,7 @@ class Call_Webhook_Action extends Base {
 
 	public function do_action( array $request, Action_Handler $handler ) {
 		$webhook_url = ! empty( $this->settings['webhook_url'] ) ? trim( $this->settings['webhook_url'] ) : false;
+        $webhook_timout = ! empty( $this->settings['webhook_timout'] ) ? (int)$this->settings['webhook_timout'] : false;
 
 		if ( ! $webhook_url ) {
 			throw new Action_Exception(
@@ -43,8 +44,16 @@ class Call_Webhook_Action extends Base {
 			);
 		}
 
+        if ( ! $webhook_timout ) {
+            throw new Action_Exception(
+                'failed',
+                esc_html__( 'Empty webhook timeout', 'jet-form-builder' )
+            );
+        }
+
 		$args = array(
 			'body' => $request,
+            'timeout' => $webhook_timout
 		);
 
 		/**
